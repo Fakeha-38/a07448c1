@@ -1,0 +1,23 @@
+
+
+@use './App' as *;
+
+.layout {
+  background-color: $secondary-bg;
+  color: $primary-color;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 360px; 
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  max-height: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+
+}

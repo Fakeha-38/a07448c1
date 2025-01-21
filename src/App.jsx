@@ -1,17 +1,19 @@
+// import './styles/App.scss';
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import Header from './Header.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ArchivedPage from './pages/ArchivedPage';
 
 const App = () => {
   return (
-    <div className='container'>
-      <Header/>
-      <div className="container-view">Some activities should be here</div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/archived" element={<ArchivedPage />} />
+      </Routes>
+    </Router>
   );
 };
 
-ReactDOM.render(<App/>, document.getElementById('app'));
-
 export default App;
+

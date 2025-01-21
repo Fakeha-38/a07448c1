@@ -1,0 +1,26 @@
+// App.scss
+$primary-bg: #0C1325;
+$primary-color: #3D3D3D;
+$secondary-bg: #FCFCFC;
+
+
+body {
+  background-color: $primary-bg;
+  font-family: Arial, sans-serif;
+  place-items: center;
+  align-items: center;
+  justify-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  color: $primary-color;
+}
