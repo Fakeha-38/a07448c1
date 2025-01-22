@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import '../styles/TopNavBar.scss';
+// import '../styles/TopNavBar.scss';
 import { FiPhoneCall } from "react-icons/fi";
 
 const TopNavBar = () => {
