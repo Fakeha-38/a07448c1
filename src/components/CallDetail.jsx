@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import * as api from '../api/getApiData';
+import React from 'react';
+import '../styles/CallDetails.scss';
 
-const CallDetail = () => {
-  console.log("Rendering CALL DEATIL component");
-
-  const { id } = useParams();
-  const [callDetail, setCallDetail] = useState(null);
-
-  useEffect(() => {
-    const fetchDetail = async () => {
-      const data = await api.fetchActivityDetail(id);
-      setCallDetail(data);
-    };
-
-    fetchDetail();
-  }, [id]);
-
-  if (!callDetail) return <div>Loading...</div>;
+const CallDetail = ({ call, onClose }) => {
+  if (!call) return null;
 
   return (
-    <div>
-      <h2>Call Details</h2>
-      <p><strong>From:</strong> {callDetail.from}</p>
-      <p><strong>To:</strong> {callDetail.to}</p>
-      <p><strong>Direction:</strong> {callDetail.direction}</p>
-      <p><strong>Duration:</strong> {callDetail.duration} seconds</p>
-      <p><strong>Call Type:</strong> {callDetail.call_type}</p>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <h2>{call.direction} Call</h2>
+        <p><strong>From:</strong> {call.from}</p>
+        <p><strong>To:</strong> {call.to}</p>
+        <p><strong>Status:</strong> {call.call_type}</p>
+        <p><strong>Date & Time:</strong> {new Date(call.created_at).toLocaleString()}</p>
+        <p><strong>Status:</strong> {call.is_archived ? 'Archived' : 'Unarchived'}</p>
+        <button onClick={onClose} className="close-btn">Close</button>
+      </div>
     </div>
   );
 };

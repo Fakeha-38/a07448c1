@@ -1,16 +1,13 @@
-
-
 @use './App' as *;
 
 .layout {
   background-color: $secondary-bg;
-  color: $primary-color;
   border-radius: 20px;
-  padding: 2rem;
+  // padding: 0 2rem;
   max-width: 360px; 
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-
+  height: 600px;
   max-height: 600px;
   margin: 0 auto;
   display: flex;
@@ -19,5 +16,64 @@
   align-items: center;
   text-align: center;
   overflow-y: auto;
+  
+  .top-nav-bar {
+    background-color: $blue-bg;
+    width: 100%;
+    padding: 5px 0 15px;
+    line-height: 1em;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: cursive;
+      .logo-text, .logo-icon {
+        font-size: 1.8rem;
+        color: $secondary-bg;
+        padding: 0 5px 0;
+      }
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      // gap: 1rem;
+      font-size: 15px;
+      line-height: 1.4em;
+      color: $secondary-bg;
+    }
+}
+.archive-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  .btn-archive-all, .btn-unarchive-all {
+    width: 50%;
+    text-align: center;
+    margin: 0;
+    padding: 4px;
+    border: none;
+    background-color: #EFEFEF;
+    box-shadow: 0 2px 4px rgba(5, 5, 5, 0.2);
+    transition: transform 0.2s, background-color 0.3s; 
+    cursor: pointer;
+    &:hover {
+      background-color: #d7d2d2;
+      transform: scale(1.02);
+
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+  }
+}
 }

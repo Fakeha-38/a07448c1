@@ -1,15 +1,37 @@
-import React from 'react';
+import { MdPhoneMissed, MdArchive, MdUnarchive } from 'react-icons/md';
+import { BsFillTelephoneInboundFill, BsFillTelephoneOutboundFill } from 'react-icons/bs';
+import '../styles/CallCard.scss';
 
-const CallCard = ({ activity }) => {
-  console.log("Rendering CALL CARD");
+const CallCard = ({ activity, onArchive, handleCallClick }) => {
+
+  const { call_type, direction, from, to, created_at, is_archived } = activity;
+
+  const getCallIcon = () => {
+    if (call_type === 'missed') return <MdPhoneMissed className="call-icon missed" />;
+    if (direction === 'inbound') return <BsFillTelephoneInboundFill className="call-icon inbound" />;
+    return <BsFillTelephoneOutboundFill className="call-icon outbound" />;
+  };
+
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+  // console.log("***Archive Status before click: ", is_archived);
   return (
     <div className="call-card">
-      
-      <p><strong>From:</strong> {activity.from}</p>
-      <p><strong>To:</strong> {activity.to}</p>
-      <p><strong>Call Type:</strong> {activity.call_type}</p>
-      <p><strong>Duration:</strong> {activity.duration} seconds</p>
-      <button>View Details</button>
+      <div className="icon-wrapper">{getCallIcon()}</div>
+      <div className="call-details" onClick={() => handleCallClick(activity)}>
+        <div className="from-number">{from}</div>
+        <div className="to-number">To: {to}</div>
+      </div>
+      <div className="call-time">{formatTime(created_at)}</div>
+      <button
+        className={`archive-button ${is_archived ? 'archived' : ''}`}
+        onClick={() => onArchive(activity.id, !is_archived)}
+        title={is_archived ? 'Unarchive Call' : 'Archive Call'}
+      >
+        {is_archived ? <MdUnarchive /> : <MdArchive />}
+      </button>
     </div>
   );
 };
