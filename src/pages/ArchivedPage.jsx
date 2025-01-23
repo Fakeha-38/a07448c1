@@ -6,14 +6,18 @@ import { useCallsData } from '../hooks/useCallsData';
 import { organizeCalls } from '../utils/SortData';
 
 const ArchivedPage = () => {
-  const { activities, isLoading, archiveCall } = useCallsData();
-  // console.log("Rendering ARCHIVED PAGE");
+  const { activities, isLoading, archiveCall, archiveAllCalls, unarchiveAllCalls } = useCallsData();
   const { archived } = organizeCalls(activities);
-
+  console.log("Rendering ARCHIVED PAGE");
   return (
-    <Layout >
-      <CallsFeed activities={activities} isLoading={isLoading} archiveCall={archiveCall} callsToDisplay={archived} />
-      </Layout>
+    <Layout archiveAllCalls={archiveAllCalls} unarchiveAllCalls={unarchiveAllCalls}>
+      <CallsFeed 
+        activities={activities} 
+        isLoading={isLoading} 
+        archiveCall={archiveCall} 
+        callsToDisplay={archived}
+      />
+    </Layout>
   );
 };
 
