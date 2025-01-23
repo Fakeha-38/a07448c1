@@ -20,6 +20,7 @@ This is a call management app that displays a list of calls, allows archiving/un
 
 *Call Detail Modal*
 
+The live demo is available [here](https://enchanting-crostata-924990.netlify.app/)
 ## Dependencies
 
 This project uses the following key dependencies:
